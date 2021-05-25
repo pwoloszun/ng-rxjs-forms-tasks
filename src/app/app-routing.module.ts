@@ -27,6 +27,27 @@ const appRoutes: Routes = [
       import('./features/51-rxjs-github-repos/rxjs-github-repos.module').then((m) => m.RxjsGithubReposModule),
   },
 
+  {
+    path: 'ngrx-basics',
+    loadChildren: () => import('./features/41-ngrx-basics/ngrx-basics.module').then(m => m.NgrxBasicsModule),
+  },
+  {
+    path: 'ngrx-async-flow',
+    loadChildren: () => import('./features/42-ngrx-async-flow/ngrx-async-flow.module').then(m => m.NgrxAsyncFlowModule),
+  },
+  {
+    path: 'adv-todos',
+    loadChildren: () => import('./features/44-adv-todos/adv-todos.module').then(m => m.AdvTodosModule),
+  },
+  {
+    path: 'single-room-detector',
+    loadChildren: () => import('./features/45-single-room-detector/single-room-detector.module').then(m => m.SingleRoomDetectorModule),
+  },
+  {
+    path: 'many-room-detectors',
+    loadChildren: () => import('./features/46-many-room-detectors/many-room-detectors.module').then(m => m.ManyRoomDetectorsModule),
+  },
+
   { path: '**', component: PageNotFoundComponent },
 ];
 

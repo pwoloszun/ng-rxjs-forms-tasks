@@ -7,6 +7,7 @@ import { TodosService } from './todos.service';
 import { FakeApiService } from './fake-api.service';
 import { SearchApiService } from './search-api.service';
 import { HeroesService } from './hero.service';
+import { RoomTemperatureApiService } from './room-temperature-api.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { HeroesService } from './hero.service';
     FakeApiService,
     SearchApiService,
     HeroesService,
+    RoomTemperatureApiService,
   ],
 })
-export class ApiModule {
-}
+export class ApiModule { }

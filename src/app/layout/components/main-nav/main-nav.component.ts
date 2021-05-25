@@ -16,6 +16,12 @@ export class MainNavComponent {
 
     { text: 'RxJS GUI tasks', url: '/rxjs-gui-tasks' },
     { text: 'RxJS GitHub repos', url: '/rxjs-github-repos' },
+
+    { text: 'ngrx basics', url: '/ngrx-basics' },
+    { text: 'ngrx async flow', url: '/ngrx-async-flow' },
+    { text: 'Adv. Todos', url: '/adv-todos' },
+    { text: 'Single Room Detector', url: '/single-room-detector' },
+    { text: 'Many Room Detectors', url: '/many-room-detectors' },
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
