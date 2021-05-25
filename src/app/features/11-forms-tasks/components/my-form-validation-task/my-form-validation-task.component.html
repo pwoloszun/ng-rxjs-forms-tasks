@@ -1,0 +1,82 @@
+<form [formGroup]="myForm"
+  class="myForm"
+>
+  <h5>My Form Validation task</h5>
+
+  <div>
+    <input
+      placeholder="Your name?"
+      type="text"
+    />
+  </div>
+
+  <div>
+    <input
+      placeholder="Enter your age"
+      type="number"
+    />
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>
+      <input
+        type="checkbox"
+      />
+      Enable details
+    </label>
+  </div>
+
+  <div class="checkboxCont">
+    <input
+      type="number"
+      placeholder="Your height"
+    />
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>Select Country</label>
+    <select>
+      <option>
+        OPTION_TODO
+      </option>
+    </select>
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>Select your interest type</label>
+    <select>
+      <option>
+        OPTION_TODO
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <p>
+      <label>Choose your Interests</label>
+    </p>
+
+    <label>
+      <input
+        type="checkbox"
+      />
+      SOME_INTEREST_TODO
+    </label>
+  </div>
+
+
+  <hr/>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+  <hr/>
+<!--  <nts-form-info [formGroup]="myForm"></nts-form-info>-->
+</form>

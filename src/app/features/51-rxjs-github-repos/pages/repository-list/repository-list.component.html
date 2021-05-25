@@ -1,0 +1,47 @@
+<h1>Github Repositories Search</h1>
+
+<label class="mt-2">
+  <span>Repository name:</span>
+  <form [formGroup]="searchForm">
+    <input formControlName="searchQuery" type="text" class="ml-2" />
+  </form>
+</label>
+
+<div *ngIf="(searchResults$ | async) as searchResults">
+  <h2>Repositories</h2>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxFlexFill>
+    <div fxFlex="50">
+      <!-- TODO 2: iterate over searchResults -->
+      <div fxLayout="row">
+        <div fxFlex="70">
+          for each
+          SEARCH_RESULT_NAME
+        </div>
+
+        <!-- TODO 3a: handle select repo -->
+        <button fxFlex="30">Owner info</button>
+      </div>
+    </div>
+
+    <div fxFlex="50">
+      <!-- TODO 3b: if owner selected then display owner info -->
+      <div>
+        <h4>OWNER_LOGIN_PLACEOLDER</h4>
+
+        <img width="200" height="auto" alt="avatar" />
+      </div>
+
+      <!-- TODO 3c: if owner all repos fetched then list all owner repos -->
+      <div>
+        <h6>All Repos</h6>
+        <div>
+          for each
+          REPO_NAME_PLACEHOLDER
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
