@@ -13,17 +13,8 @@ export const incrementAsyncCounterRequest = createAction(
   props<{ incBy: number; }>()
 );
 
-export const incrementAsyncCounterSuccess = createAction(
-  AsyncCounterActionTypes.IncrementAsyncCounterSuccess,
-  props<{ value: number }>()
-);
+// TODO incrementAsyncCounterSuccess
 
-export const decrementAsyncCounterRequest = createAction(
-  AsyncCounterActionTypes.DecrementAsyncCounterRequest,
-  props<{ decBy: number; }>()
-);
+// TODO decrementAsyncCounterRequest
 
-export const decrementAsyncCounterSuccess = createAction(
-  AsyncCounterActionTypes.DecrementAsyncCounterSuccess,
-  props<{ value: number }>()
-);
+// TODO decrementAsyncCounterSuccess

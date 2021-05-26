@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { of } from 'rxjs';
 
 import { selectors, actions } from '../../store/asyncCounter';
 
@@ -10,22 +11,18 @@ import { selectors, actions } from '../../store/asyncCounter';
 })
 export class AsyncCounterComponent {
 
-  value$ = this.store.pipe(
-    select(selectors.selectAsyncCounterValue)
-  );
-  isLoading$ = this.store.pipe(
-    select(selectors.selectAsyncCounterIsLoading)
-  );
+  value$ = of(456);
+  isLoading$ = of(true);
 
   constructor(private store: Store<any>) {
   }
 
   increment() {
-    this.store.dispatch(actions.incrementAsyncCounterRequest({ incBy: 10 }));
+    // TODO
   }
 
   decrement() {
-    this.store.dispatch(actions.decrementAsyncCounterRequest({ decBy: 5 }));
+    // TODO
   }
 
   reset() {

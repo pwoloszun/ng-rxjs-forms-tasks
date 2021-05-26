@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect, concatLatestFrom } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { delay, map } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 
 import * as actions from './async-counter.actions';
 import * as selectors from './async-counter.selectors';
@@ -19,28 +19,15 @@ export class AsyncCounterEffects {
   incrementAsyncCounter$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(actions.incrementAsyncCounterRequest),
-      delay(DELAY_IN_MS),
-      concatLatestFrom(() => this.asyncCounterValue$),
-      map(([action, value]) => {
-        const { incBy } = action;
-        const nextValue = value + incBy;
-        return actions.incrementAsyncCounterSuccess({ value: nextValue });
-      })
+      tap((action) => console.log('incrementAsyncCounter$ Effect:', action)),
+      // TODO: delay by DELAY_IN_MS
+      // TODO: select current asyncCounter value from Store
+      // TODO: calculate nextAsyncValue
+      // TODO: dispatch Success event (action)
     );
-  });
+  }, { dispatch: false });
 
-  decrementAsyncCounter$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(actions.decrementAsyncCounterRequest),
-      delay(DELAY_IN_MS),
-      concatLatestFrom(() => this.asyncCounterValue$),
-      map(([action, value]) => {
-        const { decBy } = action;
-        const nextValue = value - decBy;
-        return actions.decrementAsyncCounterSuccess({ value: nextValue });
-      })
-    );
-  });
+  // TODO: decrementAsyncCounter$
 
   constructor(
     private actions$: Actions,

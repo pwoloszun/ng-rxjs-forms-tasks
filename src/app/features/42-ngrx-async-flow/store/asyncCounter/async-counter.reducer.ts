@@ -23,21 +23,16 @@ export interface ApplicationState {
 const asyncCounterReducer = createReducer(
   initialState,
 
-  on(actions.incrementAsyncCounterRequest,
-    actions.decrementAsyncCounterRequest, (state) => {
-      return produce(state, (draftState) => {
-        draftState.isLoading = true;
-      });
-    }),
+  on(actions.incrementAsyncCounterRequest, (state, action) => {
+    const { } = action;
+    return produce(state, (draftState) => {
+      // TODO
+    });
+  }),
 
-  on(actions.incrementAsyncCounterSuccess,
-    actions.decrementAsyncCounterSuccess, (state, action) => {
-      const { value } = action;
-      return produce(state, (draftState) => {
-        draftState.isLoading = false;
-        draftState.asyncValue = value;
-      });
-    }),
+  // TODO: actions.incrementAsyncCounterSuccess,
+
+  // TODO: decrement
 
 );
 
