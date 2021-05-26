@@ -5,13 +5,14 @@ import * as actions from './counter.actions';
 
 export const counterFeatureKey = 'counter';
 
+// slice state shape
 export interface SliceState {
   value: number;
   updatedAt: number | null;
 }
 
 export const initialState: SliceState = {
-  value: 0,
+  value: -90,
   updatedAt: null,
 };
 
@@ -23,10 +24,13 @@ export interface ApplicationState {
 const counterReducer = createReducer(
   initialState,
 
-  // on(actions.DDD, (state, action) => {
-  //   const { } = action;
-  //   return state;
-  // }),
+  on(actions.incrementCounter, (state, action) => {
+    const { incBy } = action;
+    const nextState = produce(state, (draft) => {
+      draft.value += incBy;
+    });
+    return nextState;
+  }),
 
   // TODO: decrementCounter
 

@@ -4,7 +4,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorModalComponent } from '@shared/error-modal/error-modal.component';
 import { FakeApiService } from '@api/fake-api.service';
 import { fullObserver } from '@app/utils';
-import { catchError, finalize } from 'rxjs/operators';
+import { catchError, finalize, retry } from 'rxjs/operators';
+import { of, EMPTY, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'nts-get-user',
@@ -13,6 +15,8 @@ import { catchError, finalize } from 'rxjs/operators';
 })
 export class GetUserComponent {
 
+  private sub: Subscription | null = null;
+
   constructor(
     private fakeApiService: FakeApiService,
     private matSnackBar: MatSnackBar
@@ -20,6 +24,18 @@ export class GetUserComponent {
   }
 
   handleDownloadUser() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+    this.sub = this.fakeApiService.failedRequest$('/users/100', 'Cant fetch user with ID=100')
+      .pipe(
+        retry(2),
+        catchError((err) => {
+          this.openErrorSnackBar(err.message, 10);
+          this.fakeApiService.successfulRequest$('/log/error', { err }).subscribe();
+          return EMPTY;
+        })
+      ).subscribe(fullObserver('handleDownloadUser'));
     // TODO
   }
 

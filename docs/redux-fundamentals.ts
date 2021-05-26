@@ -2,7 +2,7 @@ import { produce } from 'immer';
 
 interface Action { // FSA - Flux Standard Action
   type: string;
-  payload?: any;
+  [key: string]: any;
 }
 
 class Store {
@@ -16,24 +16,23 @@ class Store {
 // in app:
 const store = new Store();
 
-const state = {
+// app state shpae
+
+// feature state aka slice state
+const state = { // global app ngrx state
   counter: { // state slice
     value: 997
   },
 
-  users: { // users state slice
-    entities: [],
-    count: 123
-  },
-
-  todos: [] //state slice
+  users: [{ id: 123 }] //state slice
 };
 
 
 
 // actions - "Events"
-const action = {
-  type: 'users/fetched',
+const action: Action = {
+  // type: '[Source] Event',
+  type: '[Product List Page] Add to Cart',
 }; // "event"
 
 // action creators
@@ -58,7 +57,7 @@ store.dispatch(action);
 // reducer(s)
 function usersReducer(state: any, action: Action) {
   switch (action.type) {
-    case 'users/fetched': {
+    case '[Product List Page] Add to Cart': {
       const nextState = produce(state, (draftState: any) => {
         draftState.entities = [];
       });
@@ -78,7 +77,7 @@ function counterReducer(state: any, action: Action) {
 
 
 function rootReducer(state: any, action: Action) {
-  const nextUsersState = usersReducer(state.users, action);
+  const nextUsersState = usersReducer(state.users, action); // slice reducer
   const nextCounterState = counterReducer(state.counter, action);
 
   return {

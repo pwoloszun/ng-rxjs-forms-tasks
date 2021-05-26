@@ -7,8 +7,8 @@ export enum CounterActionTypes {
 }
 
 export const incrementCounter = createAction(
-  '[Source] Event',
-  // props<{}>()
+  CounterActionTypes.IncrementCounter,
+  props<{ incBy: number; }>()
 );
 
 // TODO: decrementCounter

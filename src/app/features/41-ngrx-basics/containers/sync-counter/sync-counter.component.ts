@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { of } from 'rxjs';
+import { ApplicationState } from '../../store/counter/counter.reducer';
 
 import {
   actions,
@@ -14,7 +15,8 @@ import {
 })
 export class SyncCounterComponent {
 
-  value$ = of(123);
+  value$ = this.store.select((state: ApplicationState) => state.counter.value);
+
   updatedAt$ = of(2000000);;
   squareValue$ = of(456);;
 
@@ -22,7 +24,10 @@ export class SyncCounterComponent {
   }
 
   increment() {
-    // TODO
+    const action = actions.incrementCounter({
+      incBy: 10
+    });
+    this.store.dispatch(action);
   }
 
   decrement() {
