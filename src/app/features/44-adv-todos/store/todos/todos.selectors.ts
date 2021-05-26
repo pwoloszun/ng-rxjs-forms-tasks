@@ -1,14 +1,13 @@
 import { map } from 'lodash';
 import { createSelector } from '@ngrx/store';
 
+import { ITEM_STATUS } from '@api/models/todos.models';
+
 import { todoEntityAdapter, ApplicationState, todosFeatureKey, TodoStatus } from './todos.reducer';
-import { ITEM_STATUS } from './todos.models';
 
 const todoAdapterSelectors = todoEntityAdapter.getSelectors();
 
-const selectFeature = (state: ApplicationState) => {
-  return state[todosFeatureKey];
-};
+const selectFeature = (state: ApplicationState) => state[todosFeatureKey];
 
 const selectTodosDomainSlice = createSelector(
   selectFeature,

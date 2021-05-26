@@ -6,10 +6,11 @@ import { map } from 'rxjs/operators';
 import { shuffle } from 'lodash';
 import { company } from 'faker';
 
+import { ITEM_STATUS, Todo } from '@api/models/todos.models';
+
 import {
   actions,
   selectors,
-  models
 } from '../store/todos';
 
 const delayInSec = {
@@ -37,12 +38,12 @@ export class ExternalTodosWebsocketService {
     map(([todos, statuses]) => {
       return todos.filter((todo, index) => {
         const status = statuses[index];
-        return status === models.ITEM_STATUS.persisted;
+        return status === ITEM_STATUS.persisted;
       });
     })
   );
 
-  private notBlocked: models.Todo[];
+  private notBlocked: Todo[];
   private subscription = this.notBlockedTodos$.subscribe((todos) => {
     this.notBlocked = todos;
   });

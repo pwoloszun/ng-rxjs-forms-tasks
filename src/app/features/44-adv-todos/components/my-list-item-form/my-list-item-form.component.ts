@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
-import { Todo } from '../../store/todos/todos.models';
+import { Todo } from '@api/models/todos.models';
 
 @Component({
   selector: 'nts-my-list-item-form',

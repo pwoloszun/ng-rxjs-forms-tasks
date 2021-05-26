@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { TodoFormData } from '@shared/my-todo-form/my-todo-form.component';
+import { Todo } from '@api/models/todos.models';
 
-import { actions, selectors, models } from '../../store/todos';
+import { actions, selectors } from '../../store/todos';
 import { ExternalTodosWebsocketService } from '../../services/external-todos-websocket.service';
 
 @Component({
@@ -37,11 +38,11 @@ export class AdvTodosComponent implements OnInit, OnDestroy {
     this.externalTodosWs.destroy();
   }
 
-  handleRemove(todo: models.Todo) {
+  handleRemove(todo: Todo) {
     this.store.dispatch(actions.deleteSingleTodoRequest({ id: todo.id }));
   }
 
-  handleEdit(todo: models.Todo) {
+  handleEdit(todo: Todo) {
     this.store.dispatch(actions.startEditSingleTodo({ id: todo.id }));
   }
 
@@ -54,7 +55,7 @@ export class AdvTodosComponent implements OnInit, OnDestroy {
     this.store.dispatch(actions.optimisticUpdateSingleTodoRequest({ todoUpdate }));
   }
 
-  handleCancelEdit(todo: models.Todo) {
+  handleCancelEdit(todo: Todo) {
     this.store.dispatch(actions.endEditSingleTodo({ id: todo.id }));
   }
 

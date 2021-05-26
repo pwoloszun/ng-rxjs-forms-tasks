@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Todo } from '../../store/todos/todos.models'; // TODO: inject as input
+import { Todo } from '@api/models/todos.models';
 
 @Component({
   selector: 'nts-my-list',

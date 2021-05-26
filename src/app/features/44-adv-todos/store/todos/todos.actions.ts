@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 
-import { Todo, TodoParams } from './todos.models';
+import { Todo, TodoParams } from '@api/models/todos.models';
 
 export enum TodosActionTypes {
   LoadManyTodosRequest = '[Todos] LoadManyTodosRequest',

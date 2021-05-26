@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { ITEM_STATUS, Todo, TodoParams } from '../../store/todos/todos.models'; // TODO: inject as input
+import { ITEM_STATUS, Todo, TodoParams } from '@api/models/todos.models';
 
 const disabledStatuses = [
   ITEM_STATUS.saving,

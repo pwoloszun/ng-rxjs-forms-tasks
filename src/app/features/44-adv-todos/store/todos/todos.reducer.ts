@@ -3,7 +3,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as actions from './todos.actions';
-import { Todo } from './todos.models';
+import { Todo } from '@api/models/todos.models';
 
 export const todosFeatureKey = 'todosFeature';
 
@@ -43,64 +43,11 @@ const todosReducer = createReducer(
       draftState.isFetchingMany = true;
     });
   }),
-  on(actions.loadManyTodosSuccess, (state, { todos }) => {
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.isFetchingMany = false;
-      draftState.todos = todoEntityAdapter.setAll(todos, state.todos);
-    });
-  }),
+  // TODO: actions.loadManyTodosSuccess
 
-  on(actions.deleteSingleTodoRequest, (state, action) => {
-    const { id } = action;
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.todosStatuses[id] = TodoStatus.Removing;
-    });
-  }),
-  on(actions.deleteSingleTodoSuccess, (state, action) => {
-    const { id } = action;
-    return produce(state, (draftState: Draft<SliceState>) => {
-      delete draftState.todosStatuses[id];
-      draftState.todos = todoEntityAdapter.removeOne(id, state.todos);
-    });
-  }),
-
-  on(actions.optimisticUpdateSingleTodoRequest, (state, action) => {
-    const { todoUpdate } = action;
-    const { id } = todoUpdate;
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.todosStatuses[id as number] = TodoStatus.Saving;
-      draftState.todos = todoEntityAdapter.updateOne(todoUpdate, state.todos);
-    });
-  }),
-  on(actions.optimisticUpdateSingleTodoSuccess, (state, action) => {
-    const { todoUpdate } = action;
-    const { id } = todoUpdate;
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.todosStatuses[id as number] = TodoStatus.Persisted;
-      draftState.todos = todoEntityAdapter.updateOne(todoUpdate, state.todos);
-    });
-  }),
-
-  on(actions.startEditSingleTodo, (state, { id }) => {
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.todosStatuses[id] = TodoStatus.Editing;
-    });
-  }),
-  on(actions.endEditSingleTodo, (state, { id }) => {
-    return produce(state, (draftState: Draft<SliceState>) => {
-      draftState.todosStatuses[id] = TodoStatus.Persisted;
-    });
-  }),
-
-  // on actions.createTodoRequest - DO NOTHING
-  on(actions.createTodoSuccess, (state, action) => {
-    const { todo } = action;
-    const { id } = todo;
-    return produce(state, (draftState) => {
-      draftState.todosStatuses[id] = TodoStatus.Persisted;
-      draftState.todos = todoEntityAdapter.addOne(todo, state.todos);
-    });
-  }),
+  // TODO: edition
+  // TODO: removal
+  // TODO: optimistic update
 );
 
 export function reducer(state: SliceState | undefined, action: Action): SliceState {
