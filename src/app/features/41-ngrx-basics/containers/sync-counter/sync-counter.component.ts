@@ -15,7 +15,13 @@ import {
 })
 export class SyncCounterComponent {
 
-  value$ = this.store.select((state: ApplicationState) => state.counter.value);
+  value$ = this.store.select(
+    selectors.selectCounterValue
+  );
+
+  formUpdt$ = this.store.select(
+    selectors.selectFormattedUpdatedAt
+  );
 
   updatedAt$ = of(2000000);;
   squareValue$ = of(456);;
@@ -25,13 +31,16 @@ export class SyncCounterComponent {
 
   increment() {
     const action = actions.incrementCounter({
-      incBy: 10
+      incBy: 10,
+      dt: Date.now()
     });
     this.store.dispatch(action);
   }
 
   decrement() {
     // TODO
+    // decBy: 5
+    // timestamp: Date.now()
   }
 
   reset() {

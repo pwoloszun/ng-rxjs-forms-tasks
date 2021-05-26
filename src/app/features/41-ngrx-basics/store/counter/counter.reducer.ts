@@ -25,9 +25,10 @@ const counterReducer = createReducer(
   initialState,
 
   on(actions.incrementCounter, (state, action) => {
-    const { incBy } = action;
+    const { incBy, dt } = action;
     const nextState = produce(state, (draft) => {
       draft.value += incBy;
+      draft.updatedAt = dt;
     });
     return nextState;
   }),
