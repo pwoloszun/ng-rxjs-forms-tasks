@@ -20,7 +20,6 @@ export class MainNavComponent {
     { text: 'ngrx basics', url: '/ngrx-basics' },
     { text: 'ngrx async flow', url: '/ngrx-async-flow' },
     { text: 'Adv. Todos', url: '/adv-todos' },
-    { text: 'Single Room Detector', url: '/single-room-detector' },
     { text: 'Many Room Detectors', url: '/many-room-detectors' },
   ];
 
