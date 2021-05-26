@@ -11,6 +11,8 @@ import { selectors, actions } from '../../store/asyncCounter';
 })
 export class AsyncCounterComponent {
 
+  id = 100; // CounterValue entity ID
+
   value$ = of(456);
   isLoading$ = of(true);
 

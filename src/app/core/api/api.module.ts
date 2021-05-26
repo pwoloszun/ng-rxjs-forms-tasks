@@ -8,6 +8,7 @@ import { FakeApiService } from './fake-api.service';
 import { SearchApiService } from './search-api.service';
 import { HeroesService } from './hero.service';
 import { RoomTemperatureApiService } from './room-temperature-api.service';
+import { CounterValuesService } from './counter-values.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { RoomTemperatureApiService } from './room-temperature-api.service';
     SearchApiService,
     HeroesService,
     RoomTemperatureApiService,
+    CounterValuesService,
   ],
 })
 export class ApiModule { }

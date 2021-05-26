@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect, concatLatestFrom } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, map, tap, switchMap, mergeMap, exhaustMap, concatMap } from 'rxjs/operators';
 
+import { CounterValuesService } from '@api/counter-values.service';
+import { CounterValue } from '@api/models/counter-value.models';
+
+import { ApplicationState } from './async-counter.reducer';
 import * as actions from './async-counter.actions';
 import * as selectors from './async-counter.selectors';
-import { ApplicationState } from './async-counter.reducer';
 
 const DELAY_IN_MS = 1800;
 
@@ -28,10 +31,13 @@ export class AsyncCounterEffects {
   }, { dispatch: false });
 
   // TODO: decrementAsyncCounter$
+  // TODO: fetch CounterValue entity from server using CounterValuesService
+  //    this.counterValuesService.find(id)
 
   constructor(
     private actions$: Actions,
     private store$: Store<ApplicationState>,
+    private counterValuesService: CounterValuesService,
   ) { }
 
 }
