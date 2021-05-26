@@ -7,15 +7,10 @@ export enum CounterActionTypes {
 }
 
 export const incrementCounter = createAction(
-  CounterActionTypes.IncrementCounter,
-  props<{ incBy: number; timestamp: number }>()
+  '[Source] Event',
+  // props<{}>()
 );
 
-export const decrementCounter = createAction(
-  CounterActionTypes.DecrementCounter,
-  props<{ decBy: number; timestamp: number }>()
-);
+// TODO: decrementCounter
 
-export const resetCounter = createAction(
-  CounterActionTypes.ResetCounter,
-);
+// TODO: resetCounter

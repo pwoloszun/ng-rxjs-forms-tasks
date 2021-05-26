@@ -2,25 +2,12 @@ import { createSelector } from '@ngrx/store';
 
 import { ApplicationState, SliceState, counterFeatureKey } from './counter.reducer';
 
-const selectFeature = (state: ApplicationState) => {
-  return state[counterFeatureKey];
+export const selectCounterValue = (state: ApplicationState) => {
+  return -997;
 };
 
-export const selectCounterValue = createSelector(
-  selectFeature,
-  (state: SliceState) => {
-    return state.value;
-  }
-);
+// TODO selectCounterSquareValue
 
-export const selectCounterSquareValue = createSelector(
-  selectCounterValue,
-  (value: number) => {
-    return value ** 2;
-  }
-);
+// TODO selectCounterUpdatedAt
 
-export const selectCounterUpdatedAt = createSelector(
-  selectFeature,
-  (state: SliceState) => state.updatedAt
-);
+// TODO selectFormattedCounterUpdatedAt
